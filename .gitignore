@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+.terraform.lock.hcl
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# Virtual environments (shouldn't be in templates but just in case)
+.venv/
+venv/
+
+# Environment files
+.env
+.env.local
+
+# Editor
+.idea/
+*.iml
