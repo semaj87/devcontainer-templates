@@ -2,6 +2,9 @@
   "name": "Python",
   "image": "mcr.microsoft.com/devcontainers/python:3.12",
   "postCreateCommand": "pip install poetry && poetry install",
+  "containerEnv": {
+    "SHELL": "/bin/zsh"
+  },
   "remoteUser": "root",
   "customizations": {
     "jetbrains": {
