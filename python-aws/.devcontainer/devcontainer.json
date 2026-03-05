@@ -12,7 +12,7 @@
   },
   "postCreateCommand": "pip install poetry && [ -f pyproject.toml ] && poetry install || true && git clone https://github.com/semaj87/dotfiles.git ~/dotfiles && bash ~/dotfiles/install.sh",
   "mounts": [
-    "source=${localEnv:HOME}/.aws,target=/root/.aws,type=bind,readonly"
+    "source=${localEnv:HOME}/.aws,target=/home/vscode/.aws,type=bind,readonly"
   ],
   "customizations": {
     "jetbrains": {

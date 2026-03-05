@@ -1,6 +1,8 @@
 {
   "name": "Python",
-  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "postCreateCommand": "pip install poetry && [ -f pyproject.toml ] && poetry install || true && git clone https://github.com/semaj87/dotfiles.git ~/dotfiles && bash ~/dotfiles/install.sh",
   "containerEnv": {
     "SHELL": "/usr/bin/zsh"

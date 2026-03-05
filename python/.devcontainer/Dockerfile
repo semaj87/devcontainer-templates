@@ -1,22 +1,10 @@
-# Change the tag below to match the Python version required by the repo
+# Change the tag below to match the Python version required
 # e.g. 3.9, 3.10, 3.11, 3.12
 FROM mcr.microsoft.com/devcontainers/python:3.12
 
 # System tools
 RUN apt-get update && apt-get install -y \
     build-essential \
-    libssl-dev \
-    zlib1g-dev \
-    libbz2-dev \
-    libreadline-dev \
-    libsqlite3-dev \
-    libncursesw5-dev \
-    xz-utils \
-    tk-dev \
-    libxml2-dev \
-    libxmlsec1-dev \
-    libffi-dev \
-    liblzma-dev \
     jq \
     curl \
     wget \
@@ -25,16 +13,8 @@ RUN apt-get update && apt-get install -y \
     zsh \
     && apt-get clean
 
-# Install Node.js
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs \
-    && apt-get clean
-
 # Python tools
-RUN pip install awsume yq
-
-# Claude Code
-RUN npm install -g @anthropic-ai/claude-code
+RUN pip install yq
 
 # Install Powerlevel10k
 RUN su - vscode -c 'git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
