@@ -1,5 +1,6 @@
 FROM mcr.microsoft.com/devcontainers/base:ubuntu
 
+# System tools
 RUN apt-get update && apt-get install -y \
     curl \
     wget \
@@ -7,6 +8,8 @@ RUN apt-get update && apt-get install -y \
     jq \
     neovim \
     unzip \
+    python3 \
+    python3-pip \
     && apt-get clean
 
 # kubectl
@@ -40,4 +43,4 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     && rm -rf aws awscliv2.zip
 
 # awsume
-RUN pip install awsume
+RUN pip3 install awsume
