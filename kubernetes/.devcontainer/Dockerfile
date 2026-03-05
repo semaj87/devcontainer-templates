@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     jq \
     neovim \
     unzip \
+    zsh \
     python3 \
     python3-pip \
     && apt-get clean
@@ -22,7 +23,10 @@ RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s \
 RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
 # k9s
-RUN curl -sS https://webinstall.dev/k9s | bash
+RUN curl -Lo /tmp/k9s.tar.gz \
+    https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_amd64.tar.gz \
+    && tar -xzf /tmp/k9s.tar.gz -C /usr/local/bin k9s \
+    && rm /tmp/k9s.tar.gz
 
 # kubectx and kubens
 RUN curl -Lo /usr/local/bin/kubectx \
@@ -44,3 +48,6 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 
 # awsume
 RUN pip3 install awsume --break-system-packages
+
+# Set zsh as default shell for root and vscode user
+RUN chsh -s $(which zsh) && chsh -s $(which zsh) vscode
