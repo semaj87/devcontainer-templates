@@ -5,16 +5,15 @@
   },
   "features": {
     "ghcr.io/devcontainers/features/aws-cli:1": {},
-    "ghcr.io/devcontainers/features/terraform:1": {},
+    "ghcr.io/devcontainers/features/terraform:1": {}
   },
-  "postCreateCommand": "pip install poetry && [ -f pyproject.toml ] && poetry install || true",
   "containerEnv": {
-    "SHELL": "/bin/zsh"
+    "SHELL": "/usr/bin/zsh"
   },
+  "postCreateCommand": "pip install poetry && [ -f pyproject.toml ] && poetry install || true && git clone https://github.com/semaj87/dotfiles.git ~/dotfiles && bash ~/dotfiles/install.sh",
   "mounts": [
     "source=${localEnv:HOME}/.aws,target=/root/.aws,type=bind,readonly"
   ],
-  "remoteUser": "root",
   "customizations": {
     "jetbrains": {
       "backend": "PyCharm"

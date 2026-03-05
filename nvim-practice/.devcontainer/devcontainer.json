@@ -1,13 +1,10 @@
 {
   "name": "Neovim Practice",
-  "image": "mcr.microsoft.com/devcontainers/python:3.12",
-  "postCreateCommand": "pip install poetry && [ -f pyproject.toml ] && poetry install || true",
-  "containerEnv": {
-    "SHELL": "/bin/zsh"
+  "build": {
+    "dockerfile": "Dockerfile"
   },
-  "customizations": {
-    "jetbrains": {
-      "backend": "PyCharm"
-    }
-  }
+  "containerEnv": {
+    "SHELL": "/usr/bin/zsh"
+  },
+  "postCreateCommand": "git clone https://github.com/semaj87/dotfiles.git ~/dotfiles && bash ~/dotfiles/install.sh"
 }
