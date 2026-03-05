@@ -43,4 +43,4 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     && rm -rf aws awscliv2.zip
 
 # awsume
-RUN pip3 install awsume
+RUN pip3 install awsume --break-system-packages
