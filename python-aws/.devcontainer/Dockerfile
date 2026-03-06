@@ -1,4 +1,5 @@
-# Change the tag below to match the Python version required by the repo
+# Change the tag below to match the Python version in pyproject.toml
+# Check: [tool.poetry.dependencies] python = "^3.x"
 # e.g. 3.9, 3.10, 3.11, 3.12
 FROM mcr.microsoft.com/devcontainers/python:3.12
 
@@ -35,6 +36,9 @@ RUN pip install awsume yq
 
 # Claude Code
 RUN npm install -g @anthropic-ai/claude-code
+
+# tfswitch
+RUN curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | bash
 
 # Install Powerlevel10k
 RUN su - vscode -c 'git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \

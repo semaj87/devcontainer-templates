@@ -5,7 +5,6 @@
   },
   "features": {
     "ghcr.io/devcontainers/features/aws-cli:1": {},
-    "ghcr.io/devcontainers/features/terraform:1": {}
   },
   "containerEnv": {
     "SHELL": "/usr/bin/zsh"
