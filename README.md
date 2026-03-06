@@ -14,7 +14,7 @@ For professional Python development with AWS tooling. Used for work repos cloned
 - Poetry
 - AWS CLI
 - awsume
-- Terraform
+- tfswitch
 - Node.js
 - Claude Code
 - Neovim
