@@ -1,0 +1,21 @@
+{
+  "name": "Quant Dev",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/aws-cli:1": {}
+  },
+  "containerEnv": {
+    "SHELL": "/usr/bin/zsh"
+  },
+  "postCreateCommand": "pip install poetry && [ -f pyproject.toml ] && poetry install || true && git clone https://github.com/semaj87/dotfiles.git ~/dotfiles && bash ~/dotfiles/install.sh && awsume-configure --shell zsh",
+  "mounts": [
+    "source=${localEnv:HOME}/.aws,target=/home/vscode/.aws,type=bind,readonly"
+  ],
+  "customizations": {
+    "jetbrains": {
+      "backend": "PyCharm"
+    }
+  }
+}
