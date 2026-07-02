@@ -26,14 +26,20 @@ RUN apt-get update && apt-get install -y \
     unzip \
     && apt-get clean
 
+## Install Neovim via AppImage
+#RUN curl -kL https://github.com/neovim/neovim/releases/latest/download/nvim-linux-arm64.appimage \
+#    -o /tmp/nvim.appimage \
+#    && chmod +x /tmp/nvim.appimage \
+#    && /tmp/nvim.appimage --appimage-extract \
+#    && mv squashfs-root /opt/nvim \
+#    && ln -s /opt/nvim/usr/bin/nvim /usr/local/bin/nvim \
+#    && rm /tmp/nvim.appimage
+
 # Install Neovim via AppImage
 RUN curl -kL https://github.com/neovim/neovim/releases/latest/download/nvim-linux-arm64.appimage \
     -o /tmp/nvim.appimage \
-    && chmod +x /tmp/nvim.appimage \
-    && /tmp/nvim.appimage --appimage-extract \
-    && mv squashfs-root /opt/nvim \
-    && ln -s /opt/nvim/usr/bin/nvim /usr/local/bin/nvim \
-    && rm /tmp/nvim.appimage
+    && ls -la /tmp/nvim.appimage \
+    && file /tmp/nvim.appimage
 
 # Install Node.js
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
