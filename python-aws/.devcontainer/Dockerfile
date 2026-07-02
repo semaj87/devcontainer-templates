@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 # Install Neovim via AppImage
-RUN curl -L https://github.com/neovim/neovim/releases/latest/download/nvim-linux-arm64.appimage \
+RUN curl -kL https://github.com/neovim/neovim/releases/latest/download/nvim-linux-arm64.appimage \
     -o /tmp/nvim.appimage \
     && chmod +x /tmp/nvim.appimage \
     && /tmp/nvim.appimage --appimage-extract \
