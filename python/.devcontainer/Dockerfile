@@ -19,9 +19,17 @@ RUN apt-get update && apt-get install -y \
     curl \
     wget \
     git \
-    neovim \
     zsh \
     && apt-get clean
+
+# Install Neovim via AppImage (uses HTTPS, benefits from Zscaler cert)
+RUN curl -L https://github.com/neovim/neovim/releases/latest/download/nvim-linux-arm64.appimage \
+    -o /tmp/nvim.appimage \
+    && chmod +x /tmp/nvim.appimage \
+    && /tmp/nvim.appimage --appimage-extract \
+    && mv squashfs-root /opt/nvim \
+    && ln -s /opt/nvim/usr/bin/nvim /usr/local/bin/nvim \
+    && rm /tmp/nvim.appimage
 
 # Python tools
 RUN pip install yq
