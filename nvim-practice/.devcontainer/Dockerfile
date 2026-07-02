@@ -1,5 +1,15 @@
 FROM mcr.microsoft.com/devcontainers/base:ubuntu
 
+# Add Zscaler CA certificate
+# Get zscaler-ca.crt from 1Password and copy to this directory
+# cp zscaler-ca.crt .devcontainer/
+COPY zscaler-ca.crt /usr/local/share/ca-certificates/zscaler.crt
+RUN update-ca-certificates
+RUN cat /etc/ssl/certs/* > /root/ca_bundle.pem
+ENV REQUESTS_CA_BUNDLE=/root/ca_bundle.pem
+ENV SSL_CERT_FILE=/root/ca_bundle.pem
+RUN echo "cacert=/root/ca_bundle.pem" >> $HOME/.curlrc
+
 # System tools
 RUN apt-get update && apt-get install -y \
     curl \
