@@ -41,10 +41,11 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv
     && ./aws/install \
     && rm -rf aws awscliv2.zip
 
-# Install Node.js
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs \
-    && apt-get clean
+# Install Node.js via binary
+RUN curl -L https://nodejs.org/dist/v20.19.0/node-v20.19.0-linux-arm64.tar.xz \
+    -o /tmp/node.tar.xz \
+    && tar -xf /tmp/node.tar.xz -C /usr/local --strip-components=1 \
+    && rm /tmp/node.tar.xz
 
 # Python tools
 RUN pip install awsume yq
