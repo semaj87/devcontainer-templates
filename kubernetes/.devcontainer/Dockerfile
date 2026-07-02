@@ -6,12 +6,16 @@ RUN apt-get update && apt-get install -y \
     wget \
     git \
     jq \
-    neovim \
     unzip \
     zsh \
     python3 \
     python3-pip \
     && apt-get clean
+
+# Install Neovim via AppImage
+RUN curl -L https://github.com/neovim/neovim/releases/latest/download/nvim-linux-arm64.appimage \
+    -o /usr/local/bin/nvim \
+    && chmod +x /usr/local/bin/nvim
 
 # kubectl
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s \

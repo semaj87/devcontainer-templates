@@ -9,9 +9,13 @@ RUN apt-get update && apt-get install -y \
     curl \
     wget \
     git \
-    neovim \
     zsh \
     && apt-get clean
+
+# Install Neovim via AppImage
+RUN curl -L https://github.com/neovim/neovim/releases/latest/download/nvim-linux-arm64.appimage \
+    -o /usr/local/bin/nvim \
+    && chmod +x /usr/local/bin/nvim
 
 # Python tools
 RUN pip install yq
