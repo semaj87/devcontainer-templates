@@ -42,7 +42,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv
     && rm -rf aws awscliv2.zip
 
 # Install Node.js via binary
-RUN curl -L https://nodejs.org/dist/v20.19.0/node-v20.19.0-linux-arm64.tar.xz \
+RUN curl --http1.1 -L https://nodejs.org/dist/v20.19.0/node-v20.19.0-linux-arm64.tar.xz \
     -o /tmp/node.tar.xz \
     && tar -xf /tmp/node.tar.xz -C /usr/local --strip-components=1 \
     && rm /tmp/node.tar.xz
